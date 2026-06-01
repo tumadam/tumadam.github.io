@@ -87,7 +87,7 @@ const KEYS = [
     iconClass: 'shop',
     icon:      'bi-cart-fill',
     spin:      false,
-    url:       'https://t.me/tumadam2507',
+    url:       'https://tumadam.github.io',
     hide:      false,
   },
   {
