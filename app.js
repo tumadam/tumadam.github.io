@@ -1,35 +1,46 @@
 /* =============================================
    TUMADAM MOD — app.js
-   Data + Logic tách biệt hoàn toàn khỏi HTML/CSS
-   Font: Be Vietnam Pro — hỗ trợ tiếng Việt & tiếng Anh
    ============================================= */
 
 /* =============================================
    DATA — GAME DOWNLOADS
-   hide: false = hiện, true = ẩn app khỏi danh sách
+   hide: false = hiện, true = ẩn
    ============================================= */
 const GAMES = [
   {
     name:     'Aov Mod(No Hack)',
     meta:     'Cập nhật 2/6',
+    desc:     'Bản mod không hắc tài khoản — Chỉ Mod Skin.\n Tuy Nhiên Bị Tố Sẽ Ban 1-3-7 Ngày.',
     img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://tumadam.com/aovmod',
     hide:     false,
+    preview:  ['https://cdn.tumadam.com/games/preview/bba60245-7738-4588-afdc-bbdd5f637c8e.webp',
+    'https://cdn.tumadam.com/games/preview/89df9f0d-14d2-44ad-b7df-45e2790237b9.webp',
+    'https://cdn.tumadam.com/games/preview/8cbb42bf-2d14-41df-8f7c-5396c4c293e9.webp',
+    ],
   },
   {
     name:     'Aov Cheat(Map+Mod)',
     meta:     'Cập nhật 2/6',
+    desc:     'Hack map sáng + mod skin full chức năng.\n -Chơi kín không phang bụi(tránh bị tố)\n-Không nên dùng aim,auto bán đồ(dễ ban)',
     img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://tumadam.com/aovcheat',
     hide:     false,
+    preview:  ['https://cdn.tumadam.com/games/preview/96bcf782-b412-4976-b6c5-0c9cb76a2db3.webp',
+    'https://cdn.tumadam.com/games/preview/77d769f7-939a-4c92-b7b8-0dc8e20f343f.webp',
+    'https://cdn.tumadam.com/games/preview/b768dd80-04fc-468d-b173-5bfa63f8516c.webp',
+    'https://cdn.tumadam.com/games/preview/06b2d32f-1c7d-491e-a413-3a276094fd1d.webp',
+    'https://cdn.tumadam.com/games/preview/3032cd62-d49c-45ca-8d39-14aa6b0017dc.webp',
+    ],
   },
   {
     name:     'Map/Skin AOV Android',
     meta:     'Cập nhật 2/6 • Dùng Unlock nếu không muốn hắc',
+    desc:     'Mod map sáng + unlock skin cho Android. Chọn 64-bit hoặc 32-bit tuỳ máy.\n -Nếu chỉ dùng modskin thì dùng phần unlock thôi',
     img:      'https://i.imgur.com/vKPMWWx.jpeg',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'android',
@@ -37,39 +48,60 @@ const GAMES = [
     url32:    'https://tumadam.com/aov-mapmod-andr-32bit',
     urlKey:   'https://tumadam.github.io/getkeygameios/andr',
     hide:     false,
+    preview:  ['https://cdn.tumadam.com/games/preview/ac599508-ac81-4f4b-9632-dae856b2a8dc.jpeg',
+    'https://cdn.tumadam.com/games/preview/4620c619-5386-49db-8d78-c2697c8747b3.jpeg',
+    'https://cdn.tumadam.com/games/preview/dd007f19-76e7-404b-865f-71637db092a3.jpeg',
+    ],
   },
-    {
+  {
     name:     'Pupg iOS V2',
     meta:     'Cập nhật 2/6',
+    desc:     'PUBG V2 Bắn Kín Diễn Như K Có Hack(Aim Nên Cho Bụng)\n-Mod Skin Cần Tải TN',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2F412c9c52-c2df-4d65-b6ec-4c58a85234a5.webp&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://tumadam.com/pubg-mobile-vn',
     hide:     false,
+    preview:  ['https://cdn.tumadam.com/games/preview/af940d6a-1ae0-426e-af74-d3cedf9385c4.jpg',
+    'https://cdn.tumadam.com/games/preview/dea48a86-f138-4fd4-bb21-0f7971fc7f84.jpg',
+    'https://cdn.tumadam.com/games/preview/2f2b010f-cbf5-41d8-a90e-4cb58c2fcc4e.jpg',
+    ],
   },
-      {
+  {
     name:     'PUPG iOS V2.1(Mod Skin Sẽ Văng)',
     meta:     'Cập nhật 3/6',
+    desc:     'Bản V2.1 Pupg iOS(Bắn Kín), Mod Skin Sẽ Bị Văng.\n- Aim Chuẩn Hơn.',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2F412c9c52-c2df-4d65-b6ec-4c58a85234a5.webp&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://ipas.cc/vvrbgh',
     hide:     false,
+    preview:  [
+      'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780461989442-8a1i1y-IMG_7985.png&w=1920&q=75',
+      'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780461989443-htp5vf-IMG_7986.png&w=1920&q=75',
+      'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780461989443-q9toc-IMG_7988.png&w=1920&q=75',
+    ],
   },
   {
     name:     'Roblox iOS Client Delta',
     meta:     'Cập nhật 3/6',
+    desc:     'Roblox iOS tích hợp Bypass Key — chạy script trong game.',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2Ff50e2394-dcb6-4063-89ff-126faed25f26.png&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://tumadam.com/roblox-vn',
     hide:     false,
+    preview:  [
+      'https://cdn.tumadam.com/games/preview/571bdf45-d629-4d6d-b53e-f46b010c7f84.webp',
+      'https://cdn.tumadam.com/games/preview/a487499c-9fac-46bd-9d56-e2f0b4c61a43.webp',
+      'https://cdn.tumadam.com/games/preview/2027fd1c-9d4d-4166-b64d-231255b774a8.webp',
+      'https://cdn.tumadam.com/games/preview/c99f101f-190b-4c00-b1be-6761b8198c28.webp',
+    ],
   },
 ];
 
 /* =============================================
    DATA — GET KEY
-   hide: false = hiện, true = ẩn
    ============================================= */
 const KEYS = [
   {
@@ -111,15 +143,19 @@ const KEYS = [
 ];
 
 /* =============================================
-   DATA — BACKGROUND MUSIC PLAYLIST
+   DATA — PLAYLIST
    ============================================= */
 const PLAYLIST = [
-  'https://files.catbox.moe/by3qnj.mp3',
-  'https://files.catbox.moe/r3samf.mov',
+  { title: 'Sound 1', src: 'https://files.catbox.moe/by3qnj.mp3' },
+  { title: 'Sound 2', src: 'https://files.catbox.moe/r3samf.mov' },
+  { title: 'Sound 3', src: 'https://files.catbox.moe/fas7ph.mov' },
+  { title: 'Sound 4', src: 'https://files.catbox.moe/br8qom.mp4' },
+  { title: 'Sound 5', src: 'https://files.catbox.moe/6ihyha.mp4' },
+  { title: 'Sound 6', src: 'https://files.catbox.moe/0j29qi.mp4' },
 ];
 
 /* =============================================
-   DATA — TYPED.JS STRINGS
+   DATA — TYPED STRINGS
    ============================================= */
 const TYPED_STRINGS = [
   'I am Van Man',
@@ -130,7 +166,7 @@ const TYPED_STRINGS = [
 ];
 
 /* =============================================
-   PLATFORM BADGE — iOS / Android icon
+   PLATFORM BADGE
    ============================================= */
 function platformBadge(type) {
   if (type === 'android') {
@@ -143,13 +179,8 @@ function platformBadge(type) {
 }
 
 /* =============================================
-   RENDER HELPERS
+   RENDER — GAME CARD
    ============================================= */
-
-/**
- * Tạo HTML cho một game card
- * Bỏ qua nếu game.hide === true
- */
 function renderGameCard(game) {
   if (game.hide === true) return null;
 
@@ -166,6 +197,15 @@ function renderGameCard(game) {
     el.dataset.url  = game.url;
   }
 
+  const previewImgs = game.preview && game.preview.length > 0
+    ? game.preview : [game.img];
+  el.dataset.preview = JSON.stringify(previewImgs);
+  el.dataset.name    = game.name;
+  el.dataset.desc    = game.desc || game.meta || '';
+
+  const countBadge = previewImgs.length > 1
+    ? `<span class="preview-count">${previewImgs.length}</span>` : '';
+
   el.innerHTML = `
     <img class="game-thumb"
          src="${game.img}"
@@ -174,10 +214,14 @@ function renderGameCard(game) {
     <div class="game-info">
       <div class="game-name">${game.name}</div>
       <div class="game-meta">
-        <span class="game-meta-dot"></span>
-        ${game.meta}
+        <span class="game-meta-dot"></span>${game.meta}
       </div>
-      ${platformBadge(game.type)}
+      <div class="game-row-badges">
+        ${platformBadge(game.type)}
+        <button class="game-preview-btn" type="button">
+          <i class="bi bi-images"></i> Preview ${countBadge}
+        </button>
+      </div>
     </div>
     <div class="game-dl-btn ${game.type}">
       <i class="bi bi-cloud-arrow-down-fill"></i>
@@ -186,10 +230,9 @@ function renderGameCard(game) {
   return el;
 }
 
-/**
- * Tạo HTML cho một key card
- * Bỏ qua nếu key.hide === true
- */
+/* =============================================
+   RENDER — KEY CARD
+   ============================================= */
 function renderKeyCard(key) {
   if (key.hide === true) return null;
 
@@ -214,54 +257,29 @@ function renderKeyCard(key) {
 }
 
 /* =============================================
-   RENDER — Mount all sections
+   MOUNT SECTIONS
    ============================================= */
 function mountSections() {
   const gameGrid = document.getElementById('gameGrid');
   const keyGrid  = document.getElementById('keyGrid');
 
-  if (gameGrid) {
-    GAMES.forEach(g => {
-      const el = renderGameCard(g);
-      if (el) gameGrid.appendChild(el);
-    });
-  }
-  if (keyGrid) {
-    KEYS.forEach(k => {
-      const el = renderKeyCard(k);
-      if (el) keyGrid.appendChild(el);
-    });
-  }
+  if (gameGrid) GAMES.forEach(g => { const el = renderGameCard(g); if (el) gameGrid.appendChild(el); });
+  if (keyGrid)  KEYS.forEach(k  => { const el = renderKeyCard(k);  if (el) keyGrid.appendChild(el);  });
 }
 
 /* =============================================
-   POPUP / MODAL LOGIC
+   MODAL LOGIC
    ============================================= */
 const androidModal = document.getElementById('androidArch');
 const iosModal     = document.getElementById('iosVersionPopup');
 
-/**
- * Mở modal Android — 64bit / 32bit / GetKey
- */
 function openAndroidModal(url64, url32, urlKey) {
-  const btn64  = document.getElementById('apk64');
-  const btn32  = document.getElementById('apk32');
+  document.getElementById('apk64').href  = url64  || '#';
+  document.getElementById('apk32').href  = url32  || '#';
   const btnKey = document.getElementById('apkKey');
-
-  btn64.href  = url64  || '#';
-  btn32.href  = url32  || '#';
-  btnKey.href = urlKey || '#';
-
-  // Ẩn nút GetKey nếu không có link
+  btnKey.href  = urlKey || '#';
   btnKey.style.display = urlKey ? 'flex' : 'none';
-
   androidModal.classList.add('show');
-}
-
-function openIosModal(urlV1, urlV2) {
-  document.getElementById('iosV1').href = urlV1;
-  document.getElementById('iosV2').href = urlV2;
-  iosModal.classList.add('show');
 }
 
 function closeAllModals() {
@@ -269,21 +287,17 @@ function closeAllModals() {
   iosModal.classList.remove('show');
 }
 
-// Đóng khi click overlay
 [androidModal, iosModal].forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeAllModals();
-  });
+  modal.addEventListener('click', e => { if (e.target === modal) closeAllModals(); });
 });
-
-// Đóng khi click nút Huỷ
 document.querySelectorAll('.modal-cancel').forEach(btn => {
   btn.addEventListener('click', closeAllModals);
 });
 
-/**
- * Delegate click trên game grid
- */
+/* =============================================
+   GAME GRID CLICK — FIX: dùng stopPropagation
+   để preview không bubble lên card rồi mở lại
+   ============================================= */
 function bindGameGrid() {
   const gameGrid = document.getElementById('gameGrid');
   if (!gameGrid) return;
@@ -292,8 +306,19 @@ function bindGameGrid() {
     const card = e.target.closest('.game-card');
     if (!card) return;
 
-    const { type, url, url64, url32, urlKey } = card.dataset;
+    // Bấm nút Preview — dừng bubble để card không xử lý thêm
+    const previewBtn = e.target.closest('.game-preview-btn');
+    if (previewBtn) {
+      e.stopPropagation();
+      const imgs = JSON.parse(card.dataset.preview || '[]');
+      const name = card.dataset.name || 'Preview';
+      const desc = card.dataset.desc || '';
+      openPreviewModal(name, imgs, desc);
+      return;
+    }
 
+    // Bấm nút tải (dl-btn) hoặc vùng card còn lại
+    const { type, url, url64, url32, urlKey } = card.dataset;
     if (type === 'android') {
       openAndroidModal(url64, url32, urlKey);
     } else if (type === 'direct') {
@@ -312,18 +337,8 @@ function initMenu() {
   const closeBtn = nav.querySelector('.nav-close');
   const links    = nav.querySelectorAll('.menu-link');
 
-  function open() {
-    nav.classList.add('open');
-    overlay.classList.add('open');
-    fab.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function close() {
-    nav.classList.remove('open');
-    overlay.classList.remove('open');
-    fab.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  const open  = () => { nav.classList.add('open'); overlay.classList.add('open'); fab.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { nav.classList.remove('open'); overlay.classList.remove('open'); fab.classList.remove('open'); document.body.style.overflow = ''; };
 
   fab.addEventListener('click', () => nav.classList.contains('open') ? close() : open());
   closeBtn.addEventListener('click', close);
@@ -332,7 +347,7 @@ function initMenu() {
 }
 
 /* =============================================
-   DARK / LIGHT THEME
+   THEME — auto detect ngày/đêm, user có thể override
    ============================================= */
 function initTheme() {
   const html  = document.documentElement;
@@ -340,39 +355,51 @@ function initTheme() {
   const icon  = document.getElementById('themeIcon');
   const label = document.getElementById('themeLabel');
 
-  const saved = localStorage.getItem('tm_theme') || 'dark';
-  applyTheme(saved);
-
-  btn.addEventListener('click', () => {
-    const cur = html.getAttribute('data-theme');
-    applyTheme(cur === 'dark' ? 'light' : 'dark');
-  });
-
   function applyTheme(theme) {
     html.setAttribute('data-theme', theme);
-    localStorage.setItem('tm_theme', theme);
     icon.className    = theme === 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
     label.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
   }
+
+  // Nếu user đã bấm trước → dùng lại
+  // Chưa bấm → tự detect: 6h–18h = light, còn lại = dark
+  function getDefaultTheme() {
+    const saved = localStorage.getItem('tm_theme');
+    if (saved) return saved;
+    const h = new Date().getHours();
+    return (h >= 6 && h < 18) ? 'light' : 'dark';
+  }
+
+  applyTheme(getDefaultTheme());
+
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('tm_theme', next);
+  });
 }
 
 /* =============================================
-   TYPED.JS HERO TEXT
+   TYPED.JS — chạy 1 lần rồi dừng
    ============================================= */
 function initTyped() {
   const el = document.getElementById('GioiThieu');
   if (!el || typeof Typed === 'undefined') return;
   new Typed('#GioiThieu', {
-    strings:        TYPED_STRINGS,
-    typeSpeed:      65,
-    backSpeed:      35,
-    loop:           true,
-    smartBackspace: true,
+    strings:    TYPED_STRINGS,
+    typeSpeed:  60,
+    backSpeed:  30,
+    loop:       false,
+    showCursor: true,
+    cursorChar: '|',
+    onComplete: (self) => {
+      setTimeout(() => { if (self.cursor) self.cursor.style.display = 'none'; }, 1200);
+    },
   });
 }
 
 /* =============================================
-   INTRO SPLASH SCREEN
+   SPLASH
    ============================================= */
 function initSplash() {
   const splash = document.getElementById('introSplash');
@@ -382,29 +409,47 @@ function initSplash() {
 }
 
 /* =============================================
-   BACKGROUND MUSIC
+   MUSIC — shuffle random, autoplay on interaction
    ============================================= */
 function initMusic() {
   const audio = document.getElementById('bgMusic');
   if (!audio) return;
 
-  let idx = 0;
-  audio.src    = PLAYLIST[idx];
-  audio.volume = 0.45;
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
 
-  audio.addEventListener('ended', () => {
-    idx = (idx + 1) % PLAYLIST.length;
-    audio.src = PLAYLIST[idx];
+  let queue = shuffle(PLAYLIST);
+  let idx   = Math.floor(Math.random() * queue.length);
+
+  function loadTrack(i) { audio.src = queue[i].src; }
+
+  function playNext() {
+    idx = (idx + 1) % queue.length;
+    if (idx === 0) queue = shuffle(PLAYLIST);
+    loadTrack(idx);
     audio.play().catch(() => {});
-  });
+  }
+
+  audio.volume = 0.45;
+  audio.addEventListener('ended', playNext);
+  loadTrack(idx);
+  audio.play().catch(() => {});
 
   const start = () => {
     audio.play().catch(() => {});
     window.removeEventListener('click',      start);
     window.removeEventListener('touchstart', start);
+    window.removeEventListener('keydown',    start);
   };
-  window.addEventListener('click',      start);
-  window.addEventListener('touchstart', start);
+  window.addEventListener('click',      start, { once: true });
+  window.addEventListener('touchstart', start, { once: true });
+  window.addEventListener('keydown',    start, { once: true });
 }
 
 /* =============================================
@@ -412,20 +457,11 @@ function initMusic() {
    ============================================= */
 function initScrollReveal() {
   if (!('IntersectionObserver' in window)) return;
-
   const style = document.createElement('style');
-  style.textContent = `
-    .reveal { opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-  `;
+  style.textContent = `.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}.reveal.visible{opacity:1;transform:translateY(0)}`;
   document.head.appendChild(style);
-
-  const targets = document.querySelectorAll('.game-card, .key-card, .quick-card, .help-card');
-  targets.forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = `${(i % 4) * 60}ms`;
-  });
-
+  const targets = document.querySelectorAll('.game-card,.key-card,.quick-card,.help-card');
+  targets.forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = `${(i % 4) * 60}ms`; });
   const obs = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.12 }
@@ -434,16 +470,171 @@ function initScrollReveal() {
 }
 
 /* =============================================
-   INIT — Entry point
+   IMAGE PREVIEW MODAL
+   ============================================= */
+let previewCurrent = 0;
+let previewTotal   = 0;
+
+function openPreviewModal(name, imgs, desc) {
+  const modal   = document.getElementById('imgPreviewModal');
+  const track   = document.getElementById('previewTrack');
+  const dots    = document.getElementById('previewDots');
+  const title   = document.getElementById('previewTitle');
+  const descEl  = document.getElementById('previewDesc');
+  const counter = document.getElementById('previewCounter');
+
+  title.textContent = name;
+  track.innerHTML   = '';
+  dots.innerHTML    = '';
+  previewCurrent    = 0;
+  previewTotal      = imgs.length;
+
+  // Mô tả — dùng innerHTML + replace \n → <br> để xuống dòng
+  if (descEl) {
+    if (desc) {
+      descEl.innerHTML     = desc.replace(/\n/g, '<br>');
+      descEl.style.display = 'block';
+    } else {
+      descEl.style.display = 'none';
+    }
+  }
+
+  imgs.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src     = src;
+    img.alt     = `${name} - ảnh ${i + 1}`;
+    img.loading = 'lazy';
+    track.appendChild(img);
+
+    const dot = document.createElement('div');
+    dot.className = 'img-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToPreview(i));
+    dots.appendChild(dot);
+  });
+
+  const multi = imgs.length > 1;
+  dots.style.display = multi ? 'flex' : 'none';
+  document.getElementById('previewPrev').style.display = multi ? 'flex' : 'none';
+  document.getElementById('previewNext').style.display = multi ? 'flex' : 'none';
+
+  updatePreviewSlide();
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function goToPreview(idx) {
+  previewCurrent = (idx + previewTotal) % previewTotal;
+  updatePreviewSlide();
+}
+
+function updatePreviewSlide() {
+  const track   = document.getElementById('previewTrack');
+  const dots    = document.getElementById('previewDots');
+  const counter = document.getElementById('previewCounter');
+  if (track) track.style.transform = `translateX(-${previewCurrent * 100}%)`;
+  if (dots) dots.querySelectorAll('.img-dot').forEach((d, i) => d.classList.toggle('active', i === previewCurrent));
+  if (counter) {
+    counter.textContent   = previewTotal > 1 ? `${previewCurrent + 1} / ${previewTotal}` : '';
+    counter.style.display = previewTotal > 1 ? 'block' : 'none';
+  }
+}
+
+function closePreviewModal() {
+  const modal = document.getElementById('imgPreviewModal');
+  if (modal) modal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function initPreviewModal() {
+  const modal = document.getElementById('imgPreviewModal');
+  if (!modal) return;
+
+  document.getElementById('previewClose').addEventListener('click', closePreviewModal);
+  document.getElementById('previewPrev').addEventListener('click', () => goToPreview(previewCurrent - 1));
+  document.getElementById('previewNext').addEventListener('click', () => goToPreview(previewCurrent + 1));
+
+  modal.addEventListener('click', e => { if (e.target === modal) closePreviewModal(); });
+
+  let touchStartX = 0;
+  const track = document.getElementById('previewTrack');
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goToPreview(dx < 0 ? previewCurrent + 1 : previewCurrent - 1);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('show')) return;
+    if (e.key === 'ArrowLeft')  goToPreview(previewCurrent - 1);
+    if (e.key === 'ArrowRight') goToPreview(previewCurrent + 1);
+    if (e.key === 'Escape')     closePreviewModal();
+  });
+}
+
+/* =============================================
+   CLOCK WIDGET
+   ============================================= */
+function initClock() {
+  const widget  = document.getElementById('clockWidget');
+  const timeEl  = document.getElementById('clockTime');
+  const greetEl = document.getElementById('clockGreeting');
+  const iconEl  = document.getElementById('clockIcon');
+  if (!widget) return;
+
+  const PERIODS = [
+    { id: 'midnight',  from:  0, to:  5, icon: 'bi-moon-stars-fill',     greeting: 'Sục Cặc Hay Gì Giờ Này Chưa Ngủ?'    },
+    { id: 'dawn',      from:  5, to:  9, icon: 'bi-sunrise-fill',         greeting: 'Good Morning! 🌅'     },
+    { id: 'morning',   from:  9, to: 12, icon: 'bi-brightness-high-fill', greeting: 'Ăn Sáng Chưa Thằng Em? '   },
+    { id: 'noon',      from: 12, to: 14, icon: 'bi-sun-fill',             greeting: 'Trưa Rồi Lọ Đi'   },
+    { id: 'afternoon', from: 14, to: 18, icon: 'bi-cloud-sun-fill',       greeting: 'Good Afternoon! 🌿'   },
+    { id: 'evening',   from: 18, to: 22, icon: 'bi-sunset-fill',          greeting: 'Good Evening! 🌇'     },
+    { id: 'night',     from: 22, to: 24, icon: 'bi-moon-fill',            greeting: 'Good Night! 🌙'        },
+  ];
+
+  const getPeriod = h => PERIODS.find(p => h >= p.from && h < p.to) || PERIODS[0];
+  const pad = n => String(n).padStart(2, '0');
+
+  let lastPeriodId  = null;
+  let greetingShown = false;
+
+  function tick() {
+    const now = new Date();
+    const p   = getPeriod(now.getHours());
+    timeEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    if (p.id !== lastPeriodId) {
+      widget.className = `clock-widget period-${p.id}`;
+      iconEl.innerHTML = `<i class="bi ${p.icon}"></i>`;
+      lastPeriodId = p.id;
+    }
+  }
+
+  function showGreeting() {
+    if (greetingShown) return;
+    greetingShown = true;
+    const p = getPeriod(new Date().getHours());
+    greetEl.textContent = p.greeting;
+    greetEl.classList.remove('hide');
+    setTimeout(() => greetEl.classList.add('hide'), 10000);
+  }
+
+  tick();
+  showGreeting();
+  setInterval(tick, 1000);
+}
+
+/* =============================================
+   INIT
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.remove('loading');
   initTheme();
+  initClock();
   initSplash();
   mountSections();
   bindGameGrid();
   initMenu();
   initTyped();
   initMusic();
+  initPreviewModal();
   requestAnimationFrame(initScrollReveal);
 });
