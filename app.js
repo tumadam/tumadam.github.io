@@ -49,7 +49,7 @@ const GAMES = [
   },
   {
     name:     'Roblox iOS Client Delta',
-    meta:     'Cập nhật 2/6',
+    meta:     'Cập nhật 3/6',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2Ff50e2394-dcb6-4063-89ff-126faed25f26.png&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
