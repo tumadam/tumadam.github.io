@@ -114,13 +114,13 @@ const KEYS = [
     hide:      false,
   },
   {
-    name:      'Get Key LQ iOS [Máp Sáng]',
-    desc:      'Vượt 1 Link • Key 1 Ngày',
+    name:      'Get Key Pupg iOS',
+    desc:      'Vượt 2 Link • Key 1 Ngày',
     iconClass: 'ios',
     icon:      'bi-key-fill',
     spin:      true,
-    url:       'https://tumadam.github.io/getkeygameios/hackmap',
-    hide:      true,
+    url:       'https://tumadam.github.io/getkeygameios/pupg',
+    hide:      false,
   },
   {
     name:      'Mua Key LQ iOS + Android',
