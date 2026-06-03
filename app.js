@@ -39,12 +39,21 @@ const GAMES = [
     hide:     false,
   },
     {
-    name:     'Hắc PUPG iOS',
+    name:     'Pupg iOS V2',
     meta:     'Cập nhật 2/6',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2F412c9c52-c2df-4d65-b6ec-4c58a85234a5.webp&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://tumadam.com/pubg-mobile-vn',
+    hide:     false,
+  },
+      {
+    name:     'PUPG iOS V2.1(Mod Skin Sẽ Văng)',
+    meta:     'Cập nhật 3/6',
+    img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2F412c9c52-c2df-4d65-b6ec-4c58a85234a5.webp&w=256&q=75',
+    fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
+    type:     'ios',
+    url:      'https://ipas.cc/vvrbgh',
     hide:     false,
   },
   {
