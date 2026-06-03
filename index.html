@@ -20,6 +20,13 @@
 
 <body class="loading">
 
+  <!-- ===== CLOCK WIDGET ===== -->
+  <div id="clockWidget" class="clock-widget">
+    <div class="clock-greeting" id="clockGreeting"></div>
+    <div class="clock-time" id="clockTime"></div>
+    <div class="clock-period-icon" id="clockIcon"></div>
+  </div>
+
   <!-- ===== INTRO SPLASH ===== -->
   <div id="introSplash">
     <div class="splash-inner">
@@ -28,6 +35,24 @@
       <h1 class="splash-title">Tumadam MOD</h1>
       <p class="splash-sub">Đang khởi động...</p>
       <div class="splash-loader"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===== IMAGE PREVIEW MODAL ===== -->
+  <div id="imgPreviewModal">
+    <div class="img-preview-box">
+      <div class="img-preview-header">
+        <div class="img-preview-title" id="previewTitle">Preview</div>
+        <button class="img-preview-close" id="previewClose"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="img-preview-slider">
+        <button class="img-nav-btn prev" id="previewPrev"><i class="bi bi-chevron-left"></i></button>
+        <div class="img-preview-track" id="previewTrack"></div>
+        <button class="img-nav-btn next" id="previewNext"><i class="bi bi-chevron-right"></i></button>
+        <div class="img-counter" id="previewCounter">1 / 1</div>
+      </div>
+      <div class="img-preview-dots" id="previewDots"></div>
+      <div class="img-preview-desc" id="previewDesc"></div>
     </div>
   </div>
 
