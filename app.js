@@ -75,7 +75,7 @@ const GAMES = [
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
     url:      'https://ipas.cc/vvrbgh',
-    hide:     false,
+    hide:     true,
     preview:  [
       'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780461989442-8a1i1y-IMG_7985.png&w=1920&q=75',
       'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780461989443-htp5vf-IMG_7986.png&w=1920&q=75',
