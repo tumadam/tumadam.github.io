@@ -210,7 +210,7 @@ const VIDEOS = [
   {
     // Link Telegram không nhúng được → dùng type 'external' để mở tab mới
     name:  'Hướng dẫn Mod File AOV iOS',
-    meta:  'Xem trên Telegram',
+    meta:  'Xem trên Telegram||Nhớ đọc note',
     url:   'https://t.me/tumadammod1/1749',
     thumb: '',    // để trống = icon mặc định
     hide:  false,
