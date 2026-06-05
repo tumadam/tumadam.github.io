@@ -9,7 +9,7 @@
 const GAMES = [
   {
     name:     'Aov Mod(No Hack)',
-    meta:     'Cập nhật 2/6',
+    meta:     'Cập nhật 5/6',
     desc:     'Bản mod không hắc tài khoản — Chỉ Mod Skin.\n Tuy Nhiên Bị Tố Sẽ Ban 1-3-7 Ngày.',
     img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
@@ -23,7 +23,7 @@ const GAMES = [
   },
   {
     name:     'Aov Cheat(Map+Mod)',
-    meta:     'Cập nhật 2/6',
+    meta:     'Cập nhật 5/6',
     desc:     'Hack map sáng + mod skin full chức năng.\n -Chơi kín không phang bụi(tránh bị tố)\n-Không nên dùng aim,auto bán đồ(dễ ban)',
     img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
@@ -55,7 +55,7 @@ const GAMES = [
   },
   {
     name:     'Pupg iOS V2',
-    meta:     'Cập nhật 2/6',
+    meta:     'Cập nhật 5/6',
     desc:     'PUBG V2 Bắn Kín Diễn Như K Có Hack(Aim Nên Cho Bụng)\n-Mod Skin Cần Tải TN',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2F412c9c52-c2df-4d65-b6ec-4c58a85234a5.webp&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
@@ -84,7 +84,7 @@ const GAMES = [
   },
   {
     name:     'Roblox iOS Client Delta',
-    meta:     'Cập nhật 3/6',
+    meta:     'Cập nhật 5/6',
     desc:     'Roblox iOS tích hợp Bypass Key — chạy script trong game.',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2Ff50e2394-dcb6-4063-89ff-126faed25f26.png&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
