@@ -194,9 +194,9 @@ const PLAYLIST = [
    ============================================= */
 const MOD_FILES = [
   {
-    name:      'File Mod AOV iOS (IPA)',
+    name:      'File Mod AOV iOS (Zip)',
     meta:      'Cập nhật 5/6',
-    desc:      'File IPA mod skin + map sáng cho iOS.',
+    desc:      'File cho iOS.',
     type:      'ios',
     // url dùng chung nếu không có urlStrong/urlWeak
     url:       'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/5.6.Files.Mod.33.Skin.iOS.zip',
