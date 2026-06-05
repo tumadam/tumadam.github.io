@@ -212,7 +212,7 @@ const VIDEOS = [
     meta:  'Video hướng dẫn chi tiết',
     url:   'https://t.me/tumadammod1/1749',
     thumb: 'video',   // để trống = dùng icon play mặc định
-    hide:  false,
+    hide:  true,
   },
   {
     name:  'Hướng dẫn Cài App iOS',
