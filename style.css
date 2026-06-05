@@ -1032,6 +1032,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: background 0.2s;
 }
 .vid-card:hover .vid-play-icon { background: rgba(239,68,68,0.65); }
+.vid-play-icon.external { background: rgba(41,182,246,0.5); }
+.vid-card:hover .vid-play-icon.external { background: rgba(0,136,204,0.75); }
 
 .vid-info { flex: 1; min-width: 0; }
 .vid-name {
