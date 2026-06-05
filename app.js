@@ -161,13 +161,16 @@ const PLAYLIST = [
    ============================================= */
 const MOD_FILES = [
   {
-    name:  'File Mod AOV iOS (IPA)',
-    meta:  'Cập nhật 5/6',
-    desc:  'File IPA mod skin + map sáng cho iOS.',
-    type:  'ios',
-    url:   'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/5.6.Files.Mod.33.Skin.iOS.zip',
+    name:      'File Mod AOV iOS (IPA)',
+    meta:      'Cập nhật 5/6',
+    desc:      'File IPA mod skin + map sáng cho iOS.',
+    type:      'ios',
+    // url dùng chung nếu không có urlStrong/urlWeak
+    url:       'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/5.6.Files.Mod.33.Skin.iOS.zip',
+    // Nếu có 2 bản riêng thì điền vào đây, không có thì để '' → dùng url chung
+    urlStrong: 'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/5.6.Files.Mod.33.Skin.iOS.zip',
+    urlWeak:   'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/5.6.May.y.u.33skin.zip',
     hide:  false,
-    // Hướng dẫn hiện trong bảng khi bấm nút — để [] nếu không cần
     guide: {
       title: '🛠️ Fix Trận Ảo AOV iOS',
       steps: [
@@ -183,7 +186,7 @@ const MOD_FILES = [
           heading: 'Về Mod Files',
           body:    'Bạn Chỉ Cần Bật Menu Lên Chọn Xoá Mod Skin,Force Update(Ở gần nút mod files)',
         },
-                {
+        {
           heading: 'Báo Cáo Admin',
           body:    'Nhắn tin qua tele@tumadam2507 và báo skin bạn vừa gặp lỗi trận(nhớ nói cụ thể mod files hay unlock).',
         },
@@ -191,13 +194,15 @@ const MOD_FILES = [
     },
   },
   {
-    name:  'File Mod AOV Android (ZIP)',
-    meta:  'Cập nhật 2/6',
-    desc:  'Giải nén và copy vào thư mục game.',
-    type:  'zip',
-    url:   'https://tumadam.com/files/aov-mod-andr.zip',
-    hide:  true,
-    guide: null,
+    name:      'File Mod AOV Android (ZIP)',
+    meta:      'Cập nhật 2/6',
+    desc:      'Giải nén và copy vào thư mục game.',
+    type:      'zip',
+    url:       'https://tumadam.com/files/aov-mod-andr.zip',
+    urlStrong: '',
+    urlWeak:   '',
+    hide:      true,
+    guide:     null,
   },
 ];
 
@@ -210,7 +215,7 @@ const VIDEOS = [
   {
     // Link Telegram không nhúng được → dùng type 'external' để mở tab mới
     name:  'Hướng dẫn Mod File AOV iOS',
-    meta:  'Xem trên Telegram||Nhớ đọc note',
+    meta:  'Xem trên Telegram',
     url:   'https://t.me/tumadammod1/1749',
     thumb: '',    // để trống = icon mặc định
     hide:  false,
@@ -337,15 +342,22 @@ function renderModCard(mod) {
 
   const iconClass = mod.type === 'ios' ? 'ios' : 'zip';
   const iconName  = mod.type === 'ios' ? 'bi-apple' : 'bi-file-zip-fill';
+  const hasDeviceChoice = mod.type === 'ios' && (mod.urlStrong || mod.urlWeak);
 
   const el = document.createElement('div');
   el.className = 'mod-card-wrap';
 
-  // Lưu guide data nếu có
-  if (mod.guide) el.dataset.guide = JSON.stringify(mod.guide);
+  if (mod.guide) el.dataset.guide     = JSON.stringify(mod.guide);
+  if (mod.urlStrong) el.dataset.strong = mod.urlStrong;
+  if (mod.urlWeak)   el.dataset.weak   = mod.urlWeak;
+  el.dataset.fallback = mod.url || '';
+
+  // Nếu iOS có 2 bản → card không href, bấm mở modal chọn máy
+  const cardTag   = hasDeviceChoice ? `<div class="mod-card mod-card-select"` : `<a class="mod-card" href="${mod.url}" target="_blank" rel="noopener"`;
+  const cardClose = hasDeviceChoice ? `</div>` : `</a>`;
 
   el.innerHTML = `
-    <a class="mod-card" href="${mod.url}" target="_blank" rel="noopener">
+    ${cardTag}>
       <div class="mod-icon ${iconClass}">
         <i class="bi ${iconName}"></i>
       </div>
@@ -357,7 +369,7 @@ function renderModCard(mod) {
       <div class="mod-dl-btn">
         <i class="bi bi-cloud-arrow-down-fill"></i>
       </div>
-    </a>
+    ${cardClose}
     ${mod.guide ? `
     <button class="mod-guide-btn" type="button">
       <i class="bi bi-tools"></i> Hướng dẫn Fix Trận Ảo
@@ -467,8 +479,63 @@ function mountSections() {
 }
 
 /* =============================================
-   GUIDE MODAL — Hướng dẫn Fix Trận Ảo
+   DEVICE MODAL — chọn máy mạnh / máy yếu cho file iOS
    ============================================= */
+function initDeviceModal() {
+  const modal    = document.getElementById('deviceModal');
+  const closeBtn = document.getElementById('deviceModalClose');
+  const btnStrong = document.getElementById('deviceStrong');
+  const btnWeak   = document.getElementById('deviceWeak');
+  if (!modal) return;
+
+  let _strong = '', _weak = '', _fallback = '';
+
+  function openDeviceModal(strong, weak, fallback) {
+    _strong   = strong   || fallback;
+    _weak     = weak     || fallback;
+    _fallback = fallback;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDeviceModal() {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  // Bấm vào mod-card-select
+  const modGrid = document.getElementById('modGrid');
+  if (modGrid) {
+    modGrid.addEventListener('click', e => {
+      // Không xử lý nếu click vào guide button
+      if (e.target.closest('.mod-guide-btn')) return;
+
+      const card = e.target.closest('.mod-card-select');
+      if (!card) return;
+      const wrap = card.closest('.mod-card-wrap');
+      openDeviceModal(
+        wrap.dataset.strong   || '',
+        wrap.dataset.weak     || '',
+        wrap.dataset.fallback || ''
+      );
+    });
+  }
+
+  btnStrong.addEventListener('click', () => {
+    window.open(_strong, '_blank', 'noopener');
+    closeDeviceModal();
+  });
+  btnWeak.addEventListener('click', () => {
+    window.open(_weak, '_blank', 'noopener');
+    closeDeviceModal();
+  });
+
+  closeBtn.addEventListener('click', closeDeviceModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeDeviceModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('show')) closeDeviceModal();
+  });
+}
 function initGuideModal() {
   const modal   = document.getElementById('guideModal');
   const titleEl = document.getElementById('guideModalTitle');
@@ -1010,5 +1077,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreviewModal();
   initVideoModal();
   initGuideModal();
+  initDeviceModal();
   requestAnimationFrame(initScrollReveal);
 });
