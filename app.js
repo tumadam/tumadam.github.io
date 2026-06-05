@@ -20,6 +20,15 @@ const GAMES = [
     'https://cdn.tumadam.com/games/preview/89df9f0d-14d2-44ad-b7df-45e2790237b9.webp',
     'https://cdn.tumadam.com/games/preview/8cbb42bf-2d14-41df-8f7c-5396c4c293e9.webp',
     ],
+    // Nút phụ bên dưới card: type='link' mở tab mới, type='note' hiện text
+    extraBtns: [
+      {
+        label: '📋 Danh sách skin trận ảo (Unlock)',
+        type:  'link',
+        url:   'https://tumadam.github.io/autoup/note_list_skin',
+        icon:  'bi-list-check',
+      },
+    ],
   },
   {
     name:     'Aov Cheat(Map+Mod)',
@@ -35,6 +44,14 @@ const GAMES = [
     'https://cdn.tumadam.com/games/preview/b768dd80-04fc-468d-b173-5bfa63f8516c.webp',
     'https://cdn.tumadam.com/games/preview/06b2d32f-1c7d-491e-a413-3a276094fd1d.webp',
     'https://cdn.tumadam.com/games/preview/3032cd62-d49c-45ca-8d39-14aa6b0017dc.webp',
+    ],
+    extraBtns: [
+      {
+        label: '📋 Danh sách skin trận ảo (Unlock)',
+        type:  'link',
+        url:   'https://tumadam.github.io/autoup/note_list_skin',
+        icon:  'bi-list-check',
+      },
     ],
   },
   {
@@ -52,6 +69,14 @@ const GAMES = [
     'https://cdn.tumadam.com/games/preview/4620c619-5386-49db-8d78-c2697c8747b3.jpeg',
     'https://cdn.tumadam.com/games/preview/dd007f19-76e7-404b-865f-71637db092a3.jpeg',
     ],
+    extraBtns: [
+      {
+        label: '📋 Danh sách skin trận ảo (Unlock)',
+        type:  'link',
+        url:   'https://tumadam.github.io/autoup/note_list_skin',
+        icon:  'bi-list-check',
+      },
+    ],
   },
   {
     name:     'Pupg iOS V2',
@@ -65,6 +90,14 @@ const GAMES = [
     preview:  ['https://cdn.tumadam.com/games/preview/af940d6a-1ae0-426e-af74-d3cedf9385c4.jpg',
     'https://cdn.tumadam.com/games/preview/dea48a86-f138-4fd4-bb21-0f7971fc7f84.jpg',
     'https://cdn.tumadam.com/games/preview/2f2b010f-cbf5-41d8-a90e-4cb58c2fcc4e.jpg',
+    ],
+    extraBtns: [
+      {
+        label: '⚠️ Lưu ý khi dùng PUBG iOS',
+        type:  'note',
+        icon:  'bi-exclamation-triangle-fill',
+        note:  '• Aim nên chỉnh vào bụng/ngực, tránh headshot liên tục dễ bị report.\n• Không nên phang quá đà chỉ diễn như k có hack.\n• Mod skin cần tải Full Tài nguyên(gợi ý vô phần hạng tải tn thk top1 và tải hết phần tn trong xưởng là oke).\n• Nên chơi kín, không quay màn hình post lên mạng.',
+      },
     ],
   },
   {
@@ -221,7 +254,7 @@ const VIDEOS = [
     hide:  false,
   },
   {
-    name:  'Hướng dẫn Cài App iOS',
+    name:  'Hướng dẫn Cài App trên iOS',
     meta:  'Video hướng dẫn chi tiết',
     url:   'https://files.catbox.moe/2psucu.mov',
     thumb: '',    // để trống = icon mặc định
@@ -261,6 +294,11 @@ function platformBadge(type) {
    ============================================= */
 function renderGameCard(game) {
   if (game.hide === true) return null;
+
+  // Wrap nếu có extraBtns
+  const hasExtra = game.extraBtns && game.extraBtns.length > 0;
+  const wrapper  = hasExtra ? document.createElement('div') : null;
+  if (wrapper) wrapper.className = 'game-card-wrap';
 
   const el = document.createElement('div');
   el.className = 'game-card';
@@ -305,7 +343,32 @@ function renderGameCard(game) {
       <i class="bi bi-cloud-arrow-down-fill"></i>
     </div>
   `;
-  return el;
+
+  if (!hasExtra) return el;
+
+  wrapper.appendChild(el);
+
+  // Render extra buttons
+  game.extraBtns.forEach(btn => {
+    if (btn.type === 'link') {
+      const b = document.createElement('a');
+      b.className = 'game-extra-btn';
+      b.href      = btn.url;
+      b.target    = '_blank';
+      b.rel       = 'noopener';
+      b.innerHTML = `<i class="bi ${btn.icon}"></i> ${btn.label}`;
+      wrapper.appendChild(b);
+    } else if (btn.type === 'note') {
+      const b = document.createElement('button');
+      b.className        = 'game-extra-btn note-btn';
+      b.type             = 'button';
+      b.innerHTML        = `<i class="bi ${btn.icon}"></i> ${btn.label}`;
+      b.dataset.noteText = btn.note || '';
+      wrapper.appendChild(b);
+    }
+  });
+
+  return wrapper;
 }
 
 /* =============================================
@@ -479,8 +542,62 @@ function mountSections() {
 }
 
 /* =============================================
-   DEVICE MODAL — chọn máy mạnh / máy yếu cho file iOS
+   NOTE MODAL — Lưu ý PUBG và các game khác
    ============================================= */
+function initNoteModal() {
+  const modal    = document.getElementById('noteModal');
+  const titleEl  = document.getElementById('noteModalTitle');
+  const bodyEl   = document.getElementById('noteModalBody');
+  const closeBtn = document.getElementById('noteModalClose');
+  if (!modal) return;
+
+  function openNote(title, text) {
+    titleEl.textContent = title;
+    // Render từng dòng thành guide-step
+    const lines = text.split('\n').filter(l => l.trim());
+    bodyEl.innerHTML = lines.map(l => `
+      <div class="guide-step">
+        <div class="guide-step-body">${l.replace(/^[•\-]\s*/, '')}</div>
+      </div>`).join('');
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNote() {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  // Delegate click từ game grid
+  const gameGrid = document.getElementById('gameGrid');
+  if (gameGrid) {
+    gameGrid.addEventListener('click', e => {
+      const nb = e.target.closest('.note-btn');
+      if (!nb) return;
+      e.stopPropagation();
+      openNote(nb.textContent.trim(), nb.dataset.noteText || '');
+    });
+  }
+
+  closeBtn.addEventListener('click', closeNote);
+  modal.addEventListener('click', e => { if (e.target === modal) closeNote(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('show')) closeNote();
+  });
+}
+
+/* =============================================
+   SCROLL — nút Video Hướng Dẫn trên quick-cards
+   ============================================= */
+function initScrollLinks() {
+  document.querySelectorAll('a.qc-scroll').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
 function initDeviceModal() {
   const modal    = document.getElementById('deviceModal');
   const closeBtn = document.getElementById('deviceModalClose');
@@ -1078,5 +1195,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoModal();
   initGuideModal();
   initDeviceModal();
+  initNoteModal();
+  initScrollLinks();
   requestAnimationFrame(initScrollReveal);
 });
