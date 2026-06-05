@@ -8,6 +8,28 @@
    ============================================= */
 const GAMES = [
   {
+    name:     'Aov ESP',
+    meta:     'Cập nhật 6/6',
+    desc:     'Aov Map Esp Trụ 6 Phiếu/ngày',
+    img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
+    fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
+    type:     'ios',
+    url:      'https://ipas.cc/pauece',
+    hide:     false,
+    preview:  ['https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780673670456-xvkseh-IMG_8098.png&w=1920&q=75',
+    'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780673670456-zj69g-IMG_8099.png&w=1920&q=75',
+    'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780673670457-e4aaak-IMG_8100.png&w=1920&q=75',
+    ],
+    extraBtns: [
+      {
+        label: '⚠️ Lưu ý khi dùng Esp',
+        type:  'note',
+        icon:  'bi-exclamation-triangle-fill',
+        note:  '-Chỉ Bật Các Chức Năng Esp,modskin,phần cài đặt-->trụ 6phiếu/ngày\n• -Nghiêm Cấm Bật CN Hack Map(vì chỉ trụ đc 1 phiếu bị tố 1 phiếu = ban 7ngày)\n• -K dùng tab Aim&Auto.',
+      },
+    ],
+  },
+  {
     name:     'Aov Mod(No Hack)',
     meta:     'Cập nhật 5/6',
     desc:     'Bản mod không hắc tài khoản — Chỉ Mod Skin.\n Tuy Nhiên Bị Tố Sẽ Ban 1-3-7 Ngày.',
@@ -196,7 +218,7 @@ const MOD_FILES = [
   {
     name:      'File Mod AOV iOS (Zip)',
     meta:      'Cập nhật 5/6',
-    desc:      'File cho iOS.',
+    desc:      'File cho iOS||Mod file dễ lỗi trận chỉ nên dùng unlock skin.',
     type:      'ios',
     // url dùng chung nếu không có urlStrong/urlWeak
     url:       'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/5.6.Files.Mod.33.Skin.iOS.zip',
