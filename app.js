@@ -208,17 +208,18 @@ const MOD_FILES = [
    ============================================= */
 const VIDEOS = [
   {
+    // Link Telegram không nhúng được → dùng type 'external' để mở tab mới
     name:  'Hướng dẫn Mod File AOV iOS',
-    meta:  'Video hướng dẫn chi tiết',
+    meta:  'Xem trên Telegram',
     url:   'https://t.me/tumadammod1/1749',
-    thumb: 'video',   // để trống = dùng icon play mặc định
-    hide:  true,
+    thumb: '',    // để trống = icon mặc định
+    hide:  false,
   },
   {
     name:  'Hướng dẫn Cài App iOS',
     meta:  'Video hướng dẫn chi tiết',
     url:   'https://files.catbox.moe/2psucu.mov',
-    thumb: 'video',   // để trống = dùng icon play mặc định
+    thumb: '',    // để trống = icon mặc định
     hide:  false,
   },
   {
@@ -401,6 +402,11 @@ function parseVideoUrl(url) {
     };
   }
 
+  // Telegram / t.me → không nhúng được, mở tab ngoài
+  if (/t\.me\//i.test(url)) {
+    return { type: 'external', embed: url, thumb: '' };
+  }
+
   // Mặc định: thử nhúng iframe
   return { type: 'generic', embed: url, thumb: '' };
 }
@@ -409,8 +415,9 @@ function renderVidCard(vid) {
   if (vid.hide === true) return null;
 
   const info  = parseVideoUrl(vid.url);
-  // Ưu tiên thumb do user set, fallback YouTube thumb, fallback null
-  const thumb = vid.thumb || info.thumb || '';
+  // Validate thumb — phải bắt đầu bằng http để tránh lỗi img src="video"
+  const rawThumb = vid.thumb || info.thumb || '';
+  const thumb = rawThumb.startsWith('http') ? rawThumb : '';
 
   const el = document.createElement('div');
   el.className       = 'vid-card';
@@ -420,14 +427,21 @@ function renderVidCard(vid) {
   el.dataset.thumb   = thumb;
   el.dataset.name    = vid.name;
 
+  // Icon khác nhau cho external (Telegram)
+  const placeholderIcon = info.type === 'external' ? 'bi-telegram' : 'bi-film';
   const thumbHtml = thumb
     ? `<img src="${thumb}" alt="${vid.name}" loading="lazy">`
-    : `<div class="vid-thumb-placeholder"><i class="bi bi-film"></i></div>`;
+    : `<div class="vid-thumb-placeholder"><i class="bi ${placeholderIcon}"></i></div>`;
+
+  // External: hiện label "Xem →" thay vì play
+  const playHtml = info.type === 'external'
+    ? `<div class="vid-play-icon external"><i class="bi bi-box-arrow-up-right"></i></div>`
+    : `<div class="vid-play-icon"><i class="bi bi-play-fill"></i></div>`;
 
   el.innerHTML = `
     <div class="vid-thumb-wrap">
       ${thumbHtml}
-      <div class="vid-play-icon"><i class="bi bi-play-fill"></i></div>
+      ${playHtml}
     </div>
     <div class="vid-info">
       <div class="vid-name">${vid.name}</div>
@@ -586,6 +600,11 @@ function initVideoModal() {
   }
 
   function openVideo(embed, type, thumb, name) {
+    // External (Telegram, v.v.) → mở tab mới, không dùng modal
+    if (type === 'external') {
+      window.open(embed, '_blank', 'noopener');
+      return;
+    }
     title.textContent = name;
     buildPlayer(embed, type, thumb, name);
     modal.classList.add('show');
