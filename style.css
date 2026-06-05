@@ -516,6 +516,36 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .qc-icon.tg   { background: linear-gradient(135deg, #0d3347, #1b6f8a); color: #38b2f0; }
 .qc-icon.shop { background: linear-gradient(135deg, #1a2a1a, #2a4a2a); color: #4ade80; }
+.qc-icon.vid  { background: linear-gradient(135deg, #3b0a0a, #7f1d1d); color: #f87171; }
+
+/* ===== GAME EXTRA BUTTONS ===== */
+.game-card-wrap {
+  display: flex; flex-direction: column; gap: 0;
+  border-radius: 18px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: 0.25s;
+}
+.game-card-wrap:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.game-card-wrap .game-card { border: none; box-shadow: none; border-radius: 0; }
+.game-card-wrap .game-card:first-child { border-radius: 18px 18px 0 0; }
+
+.game-extra-btn {
+  width: 100%;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  background: rgba(99,102,241,0.07);
+  border: none; border-top: 1px solid var(--border);
+  font-size: 13px; font-weight: 700;
+  color: #818cf8;
+  cursor: pointer; transition: 0.2s;
+  font-family: inherit; text-align: left;
+  text-decoration: none;
+}
+.game-extra-btn i { font-size: 15px; flex-shrink: 0; }
+.game-extra-btn:hover { background: rgba(99,102,241,0.16); color: #a5b4fc; }
+.game-extra-btn.note-btn { color: #fb923c; background: rgba(251,146,60,0.07); }
+.game-extra-btn.note-btn:hover { background: rgba(251,146,60,0.16); color: #fcd34d; }
 
 .qc-text { flex: 1; }
 .qc-text strong { display: block; font-weight: 700; font-size: 15px; }
