@@ -217,11 +217,11 @@ const PLAYLIST = [
 const MOD_FILES = [
   {
     name:      'File Mod AOV iOS (Zip)',
-    meta:      'Cập nhật 6/6',
+    meta:      'Cập nhật 7/6',
     desc:      'File cho iOS||Mod file dễ lỗi trận chỉ nên dùng unlock skin.',
     type:      'ios',
     // url dùng chung nếu không có urlStrong/urlWeak
-    url:       'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/6.6.Pack.Skin.iOS.zip',
+    url:       'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/7.6.Files.Skin.iOS.zip',
     // Nếu có 2 bản riêng thì điền vào đây, không có thì để '' → dùng url chung
     urlStrong: 'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/6.6.Pack.Skin.iOS.zip',
     urlWeak:   'https://github.com/tumadam/tumadam.github.io/releases/download/fileskinaov/6.6.May.Y.u.Pack.Skin.iOS.zip',
