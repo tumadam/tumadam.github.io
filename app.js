@@ -102,7 +102,7 @@ const GAMES = [
   },
   {
     name:     'Pupg iOS V2',
-    meta:     'Cập nhật 5/6',
+    meta:     'Cập nhật 8/6',
     desc:     'PUBG V2 Bắn Kín Diễn Như K Có Hack(Aim Nên Cho Bụng)\n-Mod Skin Cần Tải TN',
     img:      'https://tumadam.com/_next/image?url=https%3A%2F%2Fcdn.tumadam.com%2Fgames%2Ficon%2F412c9c52-c2df-4d65-b6ec-4c58a85234a5.webp&w=256&q=75',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
