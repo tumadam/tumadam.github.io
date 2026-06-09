@@ -14,7 +14,7 @@ const GAMES = [
     img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
     type:     'ios',
-    url:      'https://ipas.cc/pauece',
+    url:      'https://ipas.cc/v2i5cq',
     hide:     false,
     preview:  ['https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780673670456-xvkseh-IMG_8098.png&w=1920&q=75',
     'https://ipas.cc/_next/image?url=https%3A%2F%2Fdl.ipas.cc%2Fpreviews%2F1780673670456-zj69g-IMG_8099.png&w=1920&q=75',
