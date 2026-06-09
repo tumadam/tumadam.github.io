@@ -3,7 +3,7 @@
    ============================================= */
 
 /* =============================================
-   DATA — GAME DownLoad
+   DATA — GAME DOWNLOADS
    hide: false = hiện, true = ẩn
    ============================================= */
 const GAMES = [
@@ -271,7 +271,7 @@ const VIDEOS = [
     // Link Telegram không nhúng được → dùng type 'external' để mở tab mới
     name:  'Hướng dẫn Mod File AOV iOS',
     meta:  'Xem trên Telegram',
-    url:   'https://pub-8851b5874408441f85670cfe38ce6aa7.r2.dev/-4430207506100345277.mp4',
+    url:   'https://t.me/tumadammod1/1749',
     thumb: 'Files dùng có thời hạn nếu nó hiện thông báo update j đó thì bấm nút xoá mod ở menu.\nChỉ dùng files gửi lên web(file tào lao lỗi trận ráng chịu).\n Dùng unlock vẫn okla hơn',    // để trống = icon mặc định
     hide:  false,
   },
