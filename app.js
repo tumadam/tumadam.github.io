@@ -9,7 +9,7 @@
 const GAMES = [
   {
     name:     'Aov ESP',
-    meta:     'Cập nhật 6/6',
+    meta:     'Cập nhật 9/6',
     desc:     'Aov Map Esp Trụ 6 Phiếu/ngày',
     img:      'https://play-lh.googleusercontent.com/29k6AAX1NYWPdnRmVm86NgvDlywy9o3TnNBJrbHWm3emdLB2dGrxdgc05f621I1kMVSph8U1igCpx3XTdS8blQ=w480-h960',
     fallback: 'https://i.imgur.com/vKPMWWx.jpeg',
