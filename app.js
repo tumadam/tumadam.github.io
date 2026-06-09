@@ -278,7 +278,7 @@ const VIDEOS = [
   {
     name:  'Hướng dẫn Cài App trên iOS',
     meta:  'Video hướng dẫn chi tiết',
-    url:   'https://files.catbox.moe/2psucu.mov',
+    url:   'https://pub-8851b5874408441f85670cfe38ce6aa7.r2.dev/copy_CD6B6FC3-B16A-4A32-ACB2-3B87C5B32A8F.MOV',
     thumb: '',    // để trống = icon mặc định
     hide:  false,
   },
